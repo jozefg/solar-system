@@ -68,6 +68,10 @@ def update_velocity(planet, dt, force):
     new_mom = force * dt + momentum(planet)
     planet.velocity = new_mom / planet.mass
 
+def update_pos(planet, dt):
+    '''Update a planet's position after dt seconds with its new velocity'''
+    planet.pos = planet.pos * planet.velocity * dt
+
 def mag_gravity(a, b):
     '''Magnitude of gravity between a and b. Since gravity is always attractive
     we can easily calculuate the force on a with norm(b - a) and symmetrically
@@ -92,6 +96,7 @@ def gravity_on(planet):
 def step_planet(planet):
     '''Step a planet by the time step'''
     update_velocity(planet, TIME_STEP, gravity_on(planet))
+    update_pos(planet, TIME_STEP)
 
 def step_solar_system():
     new_solar_system = []
