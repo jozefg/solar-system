@@ -51,3 +51,13 @@ solar_system = [sun,
                 saturn,
                 uranus,
                 neptune]
+
+def momentum(planet):
+    '''calculate the momentum for a given planet'''
+    return planet.mass * planet.velocity
+
+def update_velocity(planet, dt, force):
+    '''Update a planet's velocity component after being acted on by
+       a force for t, seconds'''
+    new_mom = force * dt + momentum(planet)
+    planet.velocity = new_mom / planet.mass
