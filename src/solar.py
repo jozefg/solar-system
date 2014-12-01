@@ -1,6 +1,10 @@
 from collections import namedtuple
 from visual import vector, mag
 
+# Time between simulation steps, this should
+# be tweaked as we go.
+TIME_STEP = 60 * 60 * 12 # Half a day in seconds
+
 # mass is in kg and distance is in meters.
 SolarObject = namedtuple('SolarObject', ['mass', 'velocity', 'pos'])
 
@@ -79,4 +83,10 @@ def arr(a, b):
     return norm(a.pos - b.pos)
 
 def gravity_on(planet):
+    '''Sum of all the gravitational forces on a planet from everything
+    else in the solar system'''
     return sum(mag_gravity(planet, op) * arr(planet, op) for op in planets)
+
+def step_planet(planet):
+    '''Step a planet by the time step'''
+    update_velocity(planet, TIME_STEP, gravity_on(planet))
