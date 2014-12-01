@@ -1,5 +1,5 @@
 from collections import namedtuple
-import visual as v
+from visual import vector, mag
 
 # mass is in kg and distance is in meters.
 SolarObject = namedtuple('SolarObject', ['mass', 'velocity', 'pos'])
@@ -61,3 +61,15 @@ def update_velocity(planet, dt, force):
        a force for t, seconds'''
     new_mom = force * dt + momentum(planet)
     planet.velocity = new_mom / planet.mass
+
+def mag_gravity(a, b):
+    '''Magnitude of gravity between a and b. Since gravity is always attractive
+    we can easily calculuate the force on a with norm(b - a) and symmetrically
+    for b'''
+
+    G = 6.67 * 10e-11
+    dist = mag(a.pos - b.pos)**2
+    if dist == 0:
+        return 0 # The objects were the same
+    else:
+        G * a.mass * b.mass / (1.0 * dist)
