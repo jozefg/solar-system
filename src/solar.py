@@ -1,5 +1,7 @@
 from collections import namedtuple
+import copy
 from visual import vector, mag
+
 
 # Time between simulation steps, this should
 # be tweaked as we go.
@@ -90,3 +92,11 @@ def gravity_on(planet):
 def step_planet(planet):
     '''Step a planet by the time step'''
     update_velocity(planet, TIME_STEP, gravity_on(planet))
+
+def step_solar_system():
+    new_solar_system = []
+    for planet in solar_system:
+        new_planet = copy.deepcopy(planet)
+        step_planet(new_planet)
+        new_solar_system.append(planet)
+    solar_system = new_solar_system
