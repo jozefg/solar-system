@@ -73,3 +73,10 @@ def mag_gravity(a, b):
         return 0 # The objects were the same
     else:
         G * a.mass * b.mass / (1.0 * dist)
+
+def arr(a, b):
+    '''The unit vector starting at a.pos and ending at b.pos'''
+    return norm(a.pos - b.pos)
+
+def gravity_on(planet):
+    return sum(mag_gravity(planet, op) * arr(planet, op) for op in planets)
