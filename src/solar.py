@@ -47,20 +47,20 @@ neptune = SolarObject(mass     = 1.024 * 10e26,
                       pos      = vector(0, 4.492 * 10e12, 0))
 
 # WHOA the asteroids
-ceres   = SolarObject(mass     = 9.47 * 10e20
-                      velocity = vector(10, 0, 0)
+ceres   = SolarObject(mass     = 9.47 * 10e20,
+                      velocity = vector(10, 0, 0),
                       pos      = vector(0, 3.852 * 10e11, 0))
 
-vesta   = SolarObject(mass     = 2.59 * 10e20
-                      velocity = vector(10, 0, 0)
+vesta   = SolarObject(mass     = 2.59 * 10e20,
+                      velocity = vector(10, 0, 0),
                       pos      = vector(0, 3.218 * 10e11, 0))
 
-pallas  = SolarObject(mass     = 2.11 * 10e20
-                      velocity = vector(10, 0, 0)
+pallas  = SolarObject(mass     = 2.11 * 10e20,
+                      velocity = vector(10, 0, 0),
                       pos      = vector(0, 3.189 * 10e11, 0))
-                      
-hygiea  = SolarObject(mass     = 8.67 * 10e19
-                      velocity = vector(10, 0, 0)
+
+hygiea  = SolarObject(mass     = 8.67 * 10e19,
+                      velocity = vector(10, 0, 0),
                       pos      = vector(0, 4.144 * 10e11, 0))
 
 # All together
