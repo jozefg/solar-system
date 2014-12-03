@@ -1,4 +1,4 @@
-from collections import namedtuple
+import attrdict
 import copy
 from visual import vector, mag, sphere, color, display, norm
 
@@ -21,11 +21,10 @@ def SolarObject(mass, velocity, pos):
     s.velocity = velocity
     return s
 
-ShadowPlanet = namedtuple('ShadowPlanet', ['pos', 'velocity', 'mass'])
 def shadow_planet(planet):
-    return ShadowPlanet(pos = planet.pos,
-                        velocity = planet.velocity,
-                        mass = planet.mass)
+    return attrdict.AttrDict(pos = planet.pos,
+                             velocity = planet.velocity,
+                             mass = planet.mass)
 
 # At the center is
 sun = SolarObject(1.988 * 10e30, vector(0, 0, 0), vector(0, 0, 0))
@@ -97,12 +96,12 @@ def momentum(planet):
 def update_velocity(planet, dt, force):
     '''Update a planet's velocity component after being acted on by
        a force for t, seconds'''
-    new_mom = force * dt + momentum(planet)
+    new_mom = (dt * force) + momentum(planet)
     planet.velocity = new_mom / planet.mass
 
 def update_pos(planet, dt):
     '''Update a planet's position after dt seconds with its new velocity'''
-    planet.pos = planet.pos * planet.velocity * dt
+    planet.pos = planet.pos + planet.velocity * dt
 
 def mag_gravity(a, b):
     '''Magnitude of gravity between a and b. Since gravity is always
@@ -125,12 +124,13 @@ def arr(a, b):
 def gravity_on(planet):
     '''Sum of all the gravitational forces on a planet from everything
     else in the solar system'''
-    return sum(mag_gravity(planet, op) * arr(planet, op)
-               for op in solar_system)
+    forces = (mag_gravity(planet, o) * arr(planet, o) for o in solar_system)
+    return sum(forces, vector(0, 0, 0))
 
 def step_planet(planet):
     '''Step a planet by the time step'''
-    update_velocity(planet, TIME_STEP, gravity_on(planet))
+    force = gravity_on(planet)
+    update_velocity(planet, TIME_STEP, force)
     update_pos(planet, TIME_STEP)
 
 def step_solar_system():
