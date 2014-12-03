@@ -7,10 +7,10 @@ from visual import vector, mag, sphere, color, display, norm
 TIME_STEP = 60 * 60 * 12 # Half a day in seconds
 
 # Radius to render everything with
-RADIUS = 6.955 * 10e8
+RADIUS = 6.955 * 10e20
 
 scene = display(title = "Solar System", width = 600,
-                height = 600, range = 40 * RADIUS)
+                height = 600, range = 10 * RADIUS)
 scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
