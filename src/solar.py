@@ -1,16 +1,16 @@
 import attrdict
 import copy
-from visual import vector, mag, sphere, color, display, norm
+from visual import vector, mag, sphere, color, display, norm, rate
 
 # Time between simulation steps, this should
 # be tweaked as we go.
 TIME_STEP = 60 * 60 * 12 # Half a day in seconds
 
 # Radius to render everything with
-RADIUS = 6.955 * 10e20
+RADIUS = 10e10
 
 scene = display(title = "Solar System", width = 600,
-                height = 600, range = 10 * RADIUS)
+                height = 600, range = 100 * RADIUS)
 scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
@@ -78,7 +78,6 @@ pallas  = SolarObject(mass     = 2.11 * 10e20,
 hygiea  = SolarObject(mass     = 8.67 * 10e19,
                       velocity = vector(10, 0, 0),
                       pos      = vector(0, 4.144 * 10e11, 0))
-
 # All together
 solar_system = [sun,
                 mercury,
@@ -110,12 +109,12 @@ def mag_gravity(a, b):
 
     '''
 
-    G = 6.67 * 10e-11
+    G = -6.67 * 10e-11
     dist = mag(a.pos - b.pos)**2
     if dist == 0:
         return 0 # The objects were the same
     else:
-        return G * a.mass * b.mass / (1.0 * dist)
+        return (G * a.mass * b.mass) / (1.0 * dist)
 
 def arr(a, b):
     '''The unit vector starting at a.pos and ending at b.pos'''
@@ -143,4 +142,5 @@ def step_solar_system():
         planet.velocity = shadow.velocity
 
 while True:
+    rate(100)
     step_solar_system()
