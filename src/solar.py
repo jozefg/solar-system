@@ -1,14 +1,27 @@
 from collections import namedtuple
 import copy
-from visual import vector, mag
-
+from visual import vector, mag, sphere, color
 
 # Time between simulation steps, this should
 # be tweaked as we go.
 TIME_STEP = 60 * 60 * 12 # Half a day in seconds
 
-# mass is in kg and distance is in meters.
-SolarObject = namedtuple('SolarObject', ['mass', 'velocity', 'pos'])
+# Radius to render everything with
+RADIUS = 6.955 * 10e8
+
+def SolarObject(mass, velocity, pos):
+    s = sphere(pos = pos,
+               radius = RADIUS,
+               color = color.red)
+    s.mass = mass
+    s.velocity = velocity
+    return s
+
+ShadowPlanet = namedtuple('ShadowPlanet', ['pos', 'velocity', 'mass'])
+def mirror_planet(planet):
+    return ShadowPlanet(pos = planet.pos,
+                        velocity = planet.velocity,
+                        mass = planet.mass)
 
 # At the center is
 sun = SolarObject(1.988 * 10e30, vector(0, 0, 0), vector(0, 0, 0))
@@ -88,9 +101,11 @@ def update_pos(planet, dt):
     planet.pos = planet.pos * planet.velocity * dt
 
 def mag_gravity(a, b):
-    '''Magnitude of gravity between a and b. Since gravity is always attractive
-    we can easily calculuate the force on a with norm(b - a) and symmetrically
-    for b'''
+    '''Magnitude of gravity between a and b. Since gravity is always
+    attractive we can easily calculuate the force on a with norm(b -
+    a) and symmetrically for b
+
+    '''
 
     G = 6.67 * 10e-11
     dist = mag(a.pos - b.pos)**2
@@ -114,9 +129,10 @@ def step_planet(planet):
     update_pos(planet, TIME_STEP)
 
 def step_solar_system():
-    new_solar_system = []
-    for planet in solar_system:
-        new_planet = copy.deepcopy(planet)
-        step_planet(new_planet)
-        new_solar_system.append(planet)
-    solar_system = new_solar_system
+    shadow_system = []
+    for planet in map(shadow_planet, solar_system):
+        step_planet(planet)
+        shadow_system.append(planet)
+    for (planet, shadow) in zip(solar_system, shadow_system):
+        planet.pos = shadow.pos
+        planet.velocity = shadow.velocity
