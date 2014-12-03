@@ -1,6 +1,6 @@
 from collections import namedtuple
 import copy
-from visual import vector, mag, sphere, color
+from visual import vector, mag, sphere, color, display, norm
 
 # Time between simulation steps, this should
 # be tweaked as we go.
@@ -8,6 +8,10 @@ TIME_STEP = 60 * 60 * 12 # Half a day in seconds
 
 # Radius to render everything with
 RADIUS = 6.955 * 10e8
+
+scene = display(title = "Solar System", width = 600,
+                height = 600, range = 40 * RADIUS)
+scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
     s = sphere(pos = pos,
@@ -18,7 +22,7 @@ def SolarObject(mass, velocity, pos):
     return s
 
 ShadowPlanet = namedtuple('ShadowPlanet', ['pos', 'velocity', 'mass'])
-def mirror_planet(planet):
+def shadow_planet(planet):
     return ShadowPlanet(pos = planet.pos,
                         velocity = planet.velocity,
                         mass = planet.mass)
@@ -121,7 +125,8 @@ def arr(a, b):
 def gravity_on(planet):
     '''Sum of all the gravitational forces on a planet from everything
     else in the solar system'''
-    return sum(mag_gravity(planet, op) * arr(planet, op) for op in planets)
+    return sum(mag_gravity(planet, op) * arr(planet, op)
+               for op in solar_system)
 
 def step_planet(planet):
     '''Step a planet by the time step'''
@@ -136,3 +141,6 @@ def step_solar_system():
     for (planet, shadow) in zip(solar_system, shadow_system):
         planet.pos = shadow.pos
         planet.velocity = shadow.velocity
+
+while True:
+    step_solar_system()
