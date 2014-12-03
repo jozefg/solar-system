@@ -116,7 +116,7 @@ def mag_gravity(a, b):
     if dist == 0:
         return 0 # The objects were the same
     else:
-        G * a.mass * b.mass / (1.0 * dist)
+        return G * a.mass * b.mass / (1.0 * dist)
 
 def arr(a, b):
     '''The unit vector starting at a.pos and ending at b.pos'''
