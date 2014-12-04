@@ -4,19 +4,14 @@ from visual import vector, mag, sphere, color, display, norm, rate
 
 # Time between simulation steps, this should
 # be tweaked as we go.
-TIME_STEP = 60 * 60 * 12 # Half a day in seconds
+TIME_STEP = 60 * 60 * 48 # Half a day in seconds
 
 # Radius to render everything with
 RADIUS = 1e9
 
-scene = display(title = "Solar System", width = 600,
-                height = 600, range = 500 * RADIUS)
-scene.autoscale = 0 # Turn off auto scaling.
-
 def SolarObject(mass, velocity, pos):
-    s = sphere(pos = pos,
-               radius = RADIUS,
-               color = color.red)
+    s = attrdict.AttrDict(pos = pos,
+                          radius = RADIUS)
     s.mass = mass
     s.velocity = velocity
     return s
@@ -28,7 +23,6 @@ def shadow_planet(planet):
 
 # At the center is
 sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
-sun.color = color.yellow
 
 # The planets
 mercury = SolarObject(mass     = 3.301 * 1e23,
@@ -75,7 +69,6 @@ vesta   = SolarObject(mass     = 2.59 * 1e20,
 pallas  = SolarObject(mass     = 2.11 * 1e20,
                       velocity = vector(19343.85281, 7928.782748, 0),
                       pos      = vector(9.89643 * 1e10, -3.11221 * 1e11, 0))
-(ceres.color, vesta.color, pallas.color) = (color.green, color.green, color.green)
 
 # All together
 solar_system = [sun,
@@ -145,6 +138,18 @@ def step_solar_system():
         planet.pos = shadow.pos
         planet.velocity = shadow.velocity
 
-while True:
+def is_closed():
+    for planet in solar_system:
+        if mag(planet.pos) > 6e12:
+            return False
+    return True
+
+t = 0
+neptune_orbit = 365 * 166 # 166 years
+
+while is_closed() and t < neptune_orbit:
+    t += 0.5
     rate(100)
     step_solar_system()
+    if t % 365 == 0:
+        print t / 365
