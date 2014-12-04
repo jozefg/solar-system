@@ -22,9 +22,9 @@ def SolarObject(mass, velocity, pos):
     return s
 
 def shadow_planet(planet):
-    return attrdict.AttrDict(pos = planet.pos,
-                             velocity = planet.velocity,
-                             mass = planet.mass)
+    return attrdict.AttrDict(pos = copy.deepcopy(planet.pos),
+                             velocity = copy.deepcopy(planet.velocity),
+                             mass = copy.deepcopy(planet.mass))
 
 # At the center is
 sun = SolarObject(1.988 * 10e30, vector(0, 0, 0), vector(0, 0, 0))
