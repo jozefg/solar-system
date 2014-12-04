@@ -80,6 +80,7 @@ hygiea  = SolarObject(mass     = 8.67 * 10e19,
                       pos      = vector(0, 4.144 * 10e11, 0))
 # All together
 solar_system = [sun,
+                earth,
                 mercury,
                 venus,
                 mars,
