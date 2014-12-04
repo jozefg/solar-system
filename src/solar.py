@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import attrdict
 import copy
 from visual import vector, mag, sphere, color, display, norm, rate
