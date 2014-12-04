@@ -75,6 +75,7 @@ vesta   = SolarObject(mass     = 2.59 * 1e20,
 pallas  = SolarObject(mass     = 2.11 * 1e20,
                       velocity = vector(19343.85281, 7928.782748, 0),
                       pos      = vector(9.89643 * 1e10, -3.11221 * 1e11, 0))
+(ceres.color, vesta.color, pallas.color) = (color.green, color.green, color.green)
 
 # All together
 solar_system = [sun,
