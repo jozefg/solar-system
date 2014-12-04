@@ -4,13 +4,13 @@ from visual import vector, mag, sphere, color, display, norm, rate
 
 # Time between simulation steps, this should
 # be tweaked as we go.
-TIME_STEP = 60 * 60 * 48 # Half a day in seconds
+TIME_STEP = 60 * 60 * 12 # Half a day in seconds
 
 # Radius to render everything with
-RADIUS = 1e10
+RADIUS = 1e9
 
 scene = display(title = "Solar System", width = 600,
-                height = 600, range = 100 * RADIUS)
+                height = 600, range = 500 * RADIUS)
 scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
@@ -69,12 +69,12 @@ ceres   = SolarObject(mass     = 9.47 * 1e20,
                       pos      = vector(-5.24375 * 1e10, -4.19203 * 1e11, 0))
 
 vesta   = SolarObject(mass     = 2.59 * 1e20,
-                      velocity = vector(10, 0, 0),
-                      pos      = vector(0, 3.218 * 1e11, 0))
+                      velocity = vector(15130.68296, -8743.800155, 0),
+                      pos      = vector(-2.89288 * 1e11, -3.10549 * 1e11, 0))
 
 pallas  = SolarObject(mass     = 2.11 * 1e20,
-                      velocity = vector(10, 0, 0),
-                      pos      = vector(0, 3.189 * 1e11, 0))
+                      velocity = vector(19343.85281, 7928.782748, 0),
+                      pos      = vector(9.89643 * 1e10, -3.11221 * 1e11, 0))
 
 # All together
 solar_system = [sun,
@@ -86,7 +86,9 @@ solar_system = [sun,
                 saturn,
                 uranus,
                 neptune,
-                ceres]
+                ceres,
+                vesta,
+                pallas]
 
 
 def momentum(planet):
