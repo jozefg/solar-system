@@ -22,21 +22,21 @@ def SolarObject(mass, velocity, pos):
     return s
 
 def shadow_planet(planet):
-    return attrdict.AttrDict(pos = copy.deepcopy(planet.pos),
-                             velocity = copy.deepcopy(planet.velocity),
-                             mass = copy.deepcopy(planet.mass))
+    return attrdict.AttrDict(pos = vector(0, 0, 0) + planet.pos,
+                             velocity = planet.velocity,
+                             mass = planet.mass)
 
 # At the center is
 sun = SolarObject(1.988 * 10e30, vector(0, 0, 0), vector(0, 0, 0))
 
 # The planets
 mercury = SolarObject(mass     = 3.301 * 10e23,
-                      velocity = vector(58000.98, 0, 0),
-                      pos      = vector(0, 6.751 * 10e10, 0))
+                      velocity = vector(-46295.7, 5865.94, 0),
+                      pos      = vector(5.094 * 10e10, -3.0535 * 10e10))
 
 venus   = SolarObject(mass     = 4.873 * 10e24,
-                      velocity = vector(35000.26, 0, 0),
-                      pos      = vector(0, 1.088 * 10e11, 0))
+                      velocity = vector(-7734.66, -33929.8, 0),
+                      pos      = vector(8.254 * 10e10, -7.1048 * 10e10, 0))
 
 earth   = SolarObject(mass     = 5.972 * 10e24,
                       velocity = vector(30000.29, 0, 0),
@@ -79,15 +79,19 @@ hygiea  = SolarObject(mass     = 8.67 * 10e19,
                       velocity = vector(10, 0, 0),
                       pos      = vector(0, 4.144 * 10e11, 0))
 # All together
-solar_system = [sun,
+solar_system = [ceres,
                 earth,
-                mercury,
-                venus,
-                mars,
+                hygiea,
                 jupiter,
+                mars,
+                mercury,
+                neptune,
+                pallas,
                 saturn,
                 uranus,
-                neptune]
+                venus,
+                vesta,
+                sun]
 
 def momentum(planet):
     '''calculate the momentum for a given planet'''
