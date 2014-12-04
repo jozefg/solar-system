@@ -7,7 +7,7 @@ from visual import vector, mag, sphere, color, display, norm, rate
 TIME_STEP = 60 * 60 * 12 # Half a day in seconds
 
 # Radius to render everything with
-RADIUS = 10e10
+RADIUS = 1e10
 
 scene = display(title = "Solar System", width = 600,
                 height = 600, range = 100 * RADIUS)
@@ -27,57 +27,57 @@ def shadow_planet(planet):
                              mass = planet.mass)
 
 # At the center is
-sun = SolarObject(1.988 * 10e30, vector(0, 0, 0), vector(0, 0, 0))
+sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
 
 # The planets
-mercury = SolarObject(mass     = 3.301 * 10e23,
+mercury = SolarObject(mass     = 3.301 * 1e23,
                       velocity = vector(-46295.7, 5865.94, 0),
-                      pos      = vector(5.094 * 10e10, -3.0535 * 10e10))
+                      pos      = vector(5.094 * 1e10, -3.0535 * 1e10))
 
-venus   = SolarObject(mass     = 4.873 * 10e24,
+venus   = SolarObject(mass     = 4.873 * 1e24,
                       velocity = vector(-7734.66, -33929.8, 0),
-                      pos      = vector(8.254 * 10e10, -7.1048 * 10e10, 0))
+                      pos      = vector(8.254 * 1e10, -7.1048 * 1e10, 0))
 
-earth   = SolarObject(mass     = 5.972 * 10e24,
+earth   = SolarObject(mass     = 5.972 * 1e24,
                       velocity = vector(30000.29, 0, 0),
-                      pos      = vector(0, 1.475 * 10e11, 0))
+                      pos      = vector(0, 1.475 * 1e11, 0))
 
-mars    = SolarObject(mass     = 6.417 * 10e23,
+mars    = SolarObject(mass     = 6.417 * 1e23,
                       velocity = vector(26000.5, 0, 0),
-                      pos      = vector(0, 2.068 * 10e11, 0))
+                      pos      = vector(0, 2.068 * 1e11, 0))
 
-jupiter = SolarObject(mass     = 1.898 * 10e27,
+jupiter = SolarObject(mass     = 1.898 * 1e27,
                       velocity = vector(13000.72, 0, 0),
-                      pos      = vector(0, 7.943 * 10e11, 0))
+                      pos      = vector(0, 7.943 * 1e11, 0))
 
-saturn  = SolarObject(mass     = 5.683 * 10e26,
+saturn  = SolarObject(mass     = 5.683 * 1e26,
                       velocity = vector(10000.18, 0, 0),
-                      pos      = vector(0, 1.481 * 10e12, 0))
+                      pos      = vector(0, 1.481 * 1e12, 0))
 
-uranus  = SolarObject(mass     = 8.681 * 10e25,
+uranus  = SolarObject(mass     = 8.681 * 1e25,
                       velocity = vector(7000.11, 0, 0),
-                      pos      = vector(0, 2.997 * 10e12, 0))
+                      pos      = vector(0, 2.997 * 1e12, 0))
 
-neptune = SolarObject(mass     = 1.024 * 10e26,
+neptune = SolarObject(mass     = 1.024 * 1e26,
                       velocity = vector(5000.5, 0, 0),
-                      pos      = vector(0, 4.492 * 10e12, 0))
+                      pos      = vector(0, 4.492 * 1e12, 0))
 
 # WHOA the asteroids
-ceres   = SolarObject(mass     = 9.47 * 10e20,
+ceres   = SolarObject(mass     = 9.47 * 1e20,
                       velocity = vector(10, 0, 0),
-                      pos      = vector(0, 3.852 * 10e11, 0))
+                      pos      = vector(0, 3.852 * 1e11, 0))
 
-vesta   = SolarObject(mass     = 2.59 * 10e20,
+vesta   = SolarObject(mass     = 2.59 * 1e20,
                       velocity = vector(10, 0, 0),
-                      pos      = vector(0, 3.218 * 10e11, 0))
+                      pos      = vector(0, 3.218 * 1e11, 0))
 
-pallas  = SolarObject(mass     = 2.11 * 10e20,
+pallas  = SolarObject(mass     = 2.11 * 1e20,
                       velocity = vector(10, 0, 0),
-                      pos      = vector(0, 3.189 * 10e11, 0))
+                      pos      = vector(0, 3.189 * 1e11, 0))
 
-hygiea  = SolarObject(mass     = 8.67 * 10e19,
+hygiea  = SolarObject(mass     = 8.67 * 1e19,
                       velocity = vector(10, 0, 0),
-                      pos      = vector(0, 4.144 * 10e11, 0))
+                      pos      = vector(0, 4.144 * 1e11, 0))
 # All together
 solar_system = [ceres,
                 earth,
@@ -114,7 +114,7 @@ def mag_gravity(a, b):
 
     '''
 
-    G = -6.67 * 10e-11
+    G = -6.67 * 1e-11
     dist = mag(a.pos - b.pos)**2
     if dist == 0:
         return 0 # The objects were the same
