@@ -4,13 +4,13 @@ from visual import vector, mag, sphere, color, display, norm, rate
 
 # Time between simulation steps, this should
 # be tweaked as we go.
-TIME_STEP = 60 * 60 * 12 # Half a day in seconds
+TIME_STEP = 60 * 60 * 48 # Half a day in seconds
 
 # Radius to render everything with
 RADIUS = 1e10
 
 scene = display(title = "Solar System", width = 600,
-                height = 600, range = 100 * RADIUS)
+                height = 600, range = 200 * RADIUS)
 scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
@@ -47,11 +47,11 @@ mars    = SolarObject(mass     = 6.417 * 1e23,
                       pos      = vector(2.0318 * 1e11, -3.982 * 1e10, 0))
 
 jupiter = SolarObject(mass     = 1.898 * 1e27,
-                      velocity = vector(-6953.45, 5745.867, 0),
+                      velocity = vector(-6675.818225, -6066.214399, 0),
                       pos      = vector(-5.587 * 1e11, 5.54 * 1e11, 0))
 
 saturn  = SolarObject(mass     = 5.683 * 1e26,
-                      velocity = vector(7791.65, 5016.22),
+                      velocity = vector(8046.449, -4596.41),
                       pos      = vector(-7.88 * 1e11, -1.26 * 1e12, 0))
 
 uranus  = SolarObject(mass     = 8.681 * 1e25,
@@ -75,9 +75,7 @@ pallas  = SolarObject(mass     = 2.11 * 1e20,
                       velocity = vector(10, 0, 0),
                       pos      = vector(0, 3.189 * 1e11, 0))
 
-hygiea  = SolarObject(mass     = 8.67 * 1e19,
-                      velocity = vector(10, 0, 0),
-                      pos      = vector(0, 4.144 * 1e11, 0))
+jupiter.color = color.green
 # All together
 solar_system = [sun,
                 mercury,
@@ -85,9 +83,7 @@ solar_system = [sun,
                 earth,
                 mars,
                 jupiter,
-                saturn,
-                uranus,
-                neptune]
+                saturn]
 
 
 def momentum(planet):
