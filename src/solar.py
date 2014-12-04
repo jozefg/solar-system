@@ -4,7 +4,8 @@ from visual import vector, mag, sphere, color, display, norm, rate
 
 # Time between simulation steps, this should
 # be tweaked as we go.
-TIME_STEP = 60 * 60 * 48 # Half a day in seconds
+TIME_STEP_IN_DAYS = 2
+TIME_STEP = 60 * 60 * TIME_STEP_IN_DAYS * 24 # Half a day in seconds
 
 # Radius to render everything with
 RADIUS = 1e9
@@ -141,6 +142,7 @@ def step_solar_system():
 def is_closed():
     for planet in solar_system:
         if mag(planet.pos) > 6e12:
+            print "A planet fell out of orbit"
             return False
     return True
 
@@ -148,8 +150,7 @@ t = 0
 neptune_orbit = 365 * 166 # 166 years
 
 while is_closed() and t < neptune_orbit:
-    t += 0.5
-    rate(100)
+    t += TIME_STEP_IN_DAYS
     step_solar_system()
-    if t % 365 == 0:
-        print t / 365
+else:
+    print "Terminated successfully"
