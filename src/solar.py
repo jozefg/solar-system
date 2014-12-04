@@ -10,7 +10,7 @@ TIME_STEP = 60 * 60 * 48 # Half a day in seconds
 RADIUS = 1e10
 
 scene = display(title = "Solar System", width = 600,
-                height = 600, range = 200 * RADIUS)
+                height = 600, range = 400 * RADIUS)
 scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
@@ -28,6 +28,7 @@ def shadow_planet(planet):
 
 # At the center is
 sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
+sun.color = color.yellow
 
 # The planets
 mercury = SolarObject(mass     = 3.301 * 1e23,
@@ -75,7 +76,6 @@ pallas  = SolarObject(mass     = 2.11 * 1e20,
                       velocity = vector(10, 0, 0),
                       pos      = vector(0, 3.189 * 1e11, 0))
 
-jupiter.color = color.green
 # All together
 solar_system = [sun,
                 mercury,
@@ -83,7 +83,9 @@ solar_system = [sun,
                 earth,
                 mars,
                 jupiter,
-                saturn]
+                saturn,
+                uranus,
+                neptune]
 
 
 def momentum(planet):
