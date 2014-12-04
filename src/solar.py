@@ -31,16 +31,16 @@ sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
 
 # The planets
 mercury = SolarObject(mass     = 3.301 * 1e23,
-                      velocity = vector(-46295.7, 5865.94, 0),
+                      velocity = vector(11444, 45235),
                       pos      = vector(5.094 * 1e10, -3.0535 * 1e10))
 
 venus   = SolarObject(mass     = 4.873 * 1e24,
-                      velocity = vector(-7734.66, -33929.8, 0),
-                      pos      = vector(8.254 * 1e10, -7.1048 * 1e10, 0))
+                      velocity = vector(20660.97, 27994.75, 0),
+                      pos      = vector(8.254 * 1e10, -7.105 * 1e10, 0))
 
 earth   = SolarObject(mass     = 5.972 * 1e24,
-                      velocity = vector(30000.29, 0, 0),
-                      pos      = vector(0, 1.475 * 1e11, 0))
+                      velocity = vector(-30264.3, 54.36, 0),
+                      pos      = vector(-2.607 * 1e10, 1.448 * 1e11))
 
 mars    = SolarObject(mass     = 6.417 * 1e23,
                       velocity = vector(26000.5, 0, 0),
@@ -79,19 +79,7 @@ hygiea  = SolarObject(mass     = 8.67 * 1e19,
                       velocity = vector(10, 0, 0),
                       pos      = vector(0, 4.144 * 1e11, 0))
 # All together
-solar_system = [ceres,
-                earth,
-                hygiea,
-                jupiter,
-                mars,
-                mercury,
-                neptune,
-                pallas,
-                saturn,
-                uranus,
-                venus,
-                vesta,
-                sun]
+solar_system = [sun, venus]
 
 def momentum(planet):
     '''calculate the momentum for a given planet'''
