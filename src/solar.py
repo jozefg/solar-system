@@ -10,7 +10,7 @@ TIME_STEP = 60 * 60 * 48 # Half a day in seconds
 RADIUS = 1e10
 
 scene = display(title = "Solar System", width = 600,
-                height = 600, range = 400 * RADIUS)
+                height = 600, range = 100 * RADIUS)
 scene.autoscale = 0 # Turn off auto scaling.
 
 def SolarObject(mass, velocity, pos):
@@ -65,8 +65,8 @@ neptune = SolarObject(mass     = 1.024 * 1e26,
 
 # WHOA the asteroids
 ceres   = SolarObject(mass     = 9.47 * 1e20,
-                      velocity = vector(10, 0, 0),
-                      pos      = vector(0, 3.852 * 1e11, 0))
+                      velocity = vector(17517.03472, 783.533378, 0),
+                      pos      = vector(-5.24375 * 1e10, -4.19203 * 1e11, 0))
 
 vesta   = SolarObject(mass     = 2.59 * 1e20,
                       velocity = vector(10, 0, 0),
@@ -85,7 +85,8 @@ solar_system = [sun,
                 jupiter,
                 saturn,
                 uranus,
-                neptune]
+                neptune,
+                ceres]
 
 
 def momentum(planet):
