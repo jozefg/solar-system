@@ -31,35 +31,35 @@ sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
 
 # The planets
 mercury = SolarObject(mass     = 3.301 * 1e23,
-                      velocity = vector(11444, 45235),
+                      velocity = vector(21414.0, 41456.0, 0),
                       pos      = vector(5.094 * 1e10, -3.0535 * 1e10))
 
 venus   = SolarObject(mass     = 4.873 * 1e24,
-                      velocity = vector(20660.97, 27994.75, 0),
+                      velocity = vector(19264.98, 28973.0, 0),
                       pos      = vector(8.254 * 1e10, -7.105 * 1e10, 0))
 
 earth   = SolarObject(mass     = 5.972 * 1e24,
-                      velocity = vector(-30264.3, 54.36, 0),
+                      velocity = vector(-30076.14, 3370.27, 0),
                       pos      = vector(-2.607 * 1e10, 1.448 * 1e11))
 
 mars    = SolarObject(mass     = 6.417 * 1e23,
-                      velocity = vector(26000.5, 0, 0),
+                      velocity = vector(5844.4426, 25796.73, 0),
                       pos      = vector(2.0318 * 1e11, -3.982 * 1e10, 0))
 
 jupiter = SolarObject(mass     = 1.898 * 1e27,
-                      velocity = vector(13000.72, 0, 0),
+                      velocity = vector(-6953.45, 5745.867, 0),
                       pos      = vector(-5.587 * 1e11, 5.54 * 1e11, 0))
 
 saturn  = SolarObject(mass     = 5.683 * 1e26,
-                      velocity = vector(10000.18, 0, 0),
+                      velocity = vector(7791.65, 5016.22),
                       pos      = vector(-7.88 * 1e11, -1.26 * 1e12, 0))
 
 uranus  = SolarObject(mass     = 8.681 * 1e25,
-                      velocity = vector(7000.11, 0, 0),
+                      velocity = vector(-1414.298, 6378.353, 0),
                       pos      = vector(2.8717 * 1e12, 8.18 * 1e11, 0))
 
 neptune = SolarObject(mass     = 1.024 * 1e26,
-                      velocity = vector(5000.5, 0, 0),
+                      velocity = vector(2343.522, 4929.30, 0),
                       pos      = vector(4.1226 * 1e12, -1.73977e12))
 
 # WHOA the asteroids
@@ -79,7 +79,16 @@ hygiea  = SolarObject(mass     = 8.67 * 1e19,
                       velocity = vector(10, 0, 0),
                       pos      = vector(0, 4.144 * 1e11, 0))
 # All together
-solar_system = [sun, venus]
+solar_system = [sun,
+                mercury,
+                venus,
+                earth,
+                mars,
+                jupiter,
+                saturn,
+                uranus,
+                neptune]
+
 
 def momentum(planet):
     '''calculate the momentum for a given planet'''
