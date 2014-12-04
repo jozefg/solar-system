@@ -44,23 +44,23 @@ earth   = SolarObject(mass     = 5.972 * 1e24,
 
 mars    = SolarObject(mass     = 6.417 * 1e23,
                       velocity = vector(26000.5, 0, 0),
-                      pos      = vector(0, 2.068 * 1e11, 0))
+                      pos      = vector(2.0318 * 1e11, -3.982 * 1e10, 0))
 
 jupiter = SolarObject(mass     = 1.898 * 1e27,
                       velocity = vector(13000.72, 0, 0),
-                      pos      = vector(0, 7.943 * 1e11, 0))
+                      pos      = vector(-5.587 * 1e11, 5.54 * 1e11, 0))
 
 saturn  = SolarObject(mass     = 5.683 * 1e26,
                       velocity = vector(10000.18, 0, 0),
-                      pos      = vector(0, 1.481 * 1e12, 0))
+                      pos      = vector(-7.88 * 1e11, -1.26 * 1e12, 0))
 
 uranus  = SolarObject(mass     = 8.681 * 1e25,
                       velocity = vector(7000.11, 0, 0),
-                      pos      = vector(0, 2.997 * 1e12, 0))
+                      pos      = vector(2.8717 * 1e12, 8.18 * 1e11, 0))
 
 neptune = SolarObject(mass     = 1.024 * 1e26,
                       velocity = vector(5000.5, 0, 0),
-                      pos      = vector(0, 4.492 * 1e12, 0))
+                      pos      = vector(4.1226 * 1e12, -1.73977e12))
 
 # WHOA the asteroids
 ceres   = SolarObject(mass     = 9.47 * 1e20,
