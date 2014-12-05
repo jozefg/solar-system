@@ -30,7 +30,7 @@ def shadow_planet(planet):
 sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
 
 # The planets
-mercury = SolarObject(mass     = CHANGE_FACTOR * 3.301 * 1e23,
+mercury = SolarObject(mass     = 3.301 * 1e23,
                       velocity = vector(21414.0, 41456.0, 0),
                       pos      = vector(5.094 * 1e10, -3.0535 * 1e10))
 
@@ -146,7 +146,6 @@ def step_solar_system():
 def is_closed():
     for planet in solar_system:
         if mag(planet.pos) > 6e12:
-            print "A planet fell out of orbit"
             return False
     return True
 
@@ -154,8 +153,7 @@ def is_stable():
     for a in [ceres, vesta, pallas]:
         dist = mag(a.pos)
         if dist < 1.1e11 or dist > 8.2e11:
-            print "An asteroid fell out of orbit"
-            return False
+            exit(1)
     return True
 
 
