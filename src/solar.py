@@ -1,7 +1,10 @@
 #!/usr/bin/env python
+from sys import argv
 import attrdict
 import copy
 from visual import vector, mag, sphere, color, display, norm, rate
+
+CHANGE_FACTOR = int(argv[1])
 
 # Time between simulation steps, this should
 # be tweaked as we go.
@@ -27,7 +30,7 @@ def shadow_planet(planet):
 sun = SolarObject(1.988 * 1e30, vector(0, 0, 0), vector(0, 0, 0))
 
 # The planets
-mercury = SolarObject(mass     = 3.301 * 1e23,
+mercury = SolarObject(mass     = CHANGE_FACTOR * 3.301 * 1e23,
                       velocity = vector(21414.0, 41456.0, 0),
                       pos      = vector(5.094 * 1e10, -3.0535 * 1e10))
 
@@ -151,6 +154,7 @@ def is_stable():
     for a in [ceres, vesta, pallas]:
         dist = mag(a.pos)
         if dist < 1.1e11 or dist > 8.2e11:
+            print "An asteroid fell out of orbit"
             return False
     return True
 
