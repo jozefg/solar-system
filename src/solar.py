@@ -147,11 +147,18 @@ def is_closed():
             return False
     return True
 
+def is_stable():
+    for a in [ceres, vesta, pallas]:
+        dist = mag(a.pos)
+        if dist < 2e11 or dist > 8.2e11:
+            print "An asteroid fell out of orbit"
+            return False
+    return True
+
+
 t = 0
 neptune_orbit = 365 * 166 # 166 years
 
-while is_closed() and t < neptune_orbit:
+while is_stable() and t < neptune_orbit:
     t += TIME_STEP_IN_DAYS
     step_solar_system()
-else:
-    print "Terminated successfully"
