@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from __future__ import division
-
 from subprocess import call
 
 def run_with(n):
@@ -22,7 +20,7 @@ while not max_value:
 while not (-10 < max_value - min_value < 10):
     print current
     current = (max_value + min_value) / 2
-    if run_with(int(current)):
+    if run_with(current):
         max_value = current
     else:
         min_value = current
