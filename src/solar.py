@@ -150,8 +150,7 @@ def is_closed():
 def is_stable():
     for a in [ceres, vesta, pallas]:
         dist = mag(a.pos)
-        if dist < 2e11 or dist > 8.2e11:
-            print "An asteroid fell out of orbit"
+        if dist < 1.1e11 or dist > 8.2e11:
             return False
     return True
 
