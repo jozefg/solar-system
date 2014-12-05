@@ -4,7 +4,7 @@ import attrdict
 import copy
 from visual import vector, mag, sphere, color, display, norm, rate
 
-CHANGE_FACTOR = int(argv[1])
+CHANGE_FACTOR = int(argv[1]) if len(argv) > 1 else 0
 
 # Time between simulation steps, this should
 # be tweaked as we go.
